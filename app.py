@@ -1,15 +1,15 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from datetime import date, timedelta
 import matplotlib.pyplot as plt
-from utils.db_ops import (
+from datetime import date, timedelta
+from db_ops import (
     create_table, insert_activity, fetch_by_user,
     update_activity, delete_activity
 )
-from utils.auth import create_user_table, add_user, login_user
+from auth import create_user_table, add_user, login_user
 
-# Inisialisasi
+# Inisialisasi tabel database jika belum ada
 create_table()
 create_user_table()
 
@@ -23,7 +23,7 @@ if not st.session_state.logged_in:
     auth_menu = st.sidebar.radio("Login / Daftar", ["Login", "Daftar Akun"])
 
     st.markdown("""
-        <div style='padding: 20px; background-color: #0e1117; border-radius: 10px; color: white;'>
+        <div style='padding: 20px; background-color: #f0f2f6; border-radius: 10px; color: black;'>
             <h3>🔒 Silakan login terlebih dahulu untuk menggunakan aplikasi.</h3>
             <p>Jika belum memiliki akun, silakan daftar terlebih dahulu melalui menu di samping kiri.</p>
         </div>
@@ -116,7 +116,7 @@ if st.session_state.logged_in:
                     autopct=autopct,
                     startangle=140,
                     colors=[chart_color] * len(chart),
-                    wedgeprops={'linewidth': 1.5, 'edgecolor': 'black'}
+                    wedgeprops={'linewidth': 1, 'edgecolor': 'black'}
                 )
                 ax.axis("equal")
                 ax.set_title("Pie Chart Aktivitas")
