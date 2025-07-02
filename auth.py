@@ -1,7 +1,8 @@
 import sqlite3
 import hashlib
+import os
+DB_PATH = os.path.join(os.getcwd(), "activity.db")
 
-DB_PATH = "db/activity.db"
 
 def get_connection():
     return sqlite3.connect(DB_PATH, check_same_thread=False)
