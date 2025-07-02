@@ -1,7 +1,9 @@
 import sqlite3
 import pandas as pd
+import os
 
-DB_PATH = "db/activity.db"
+# Simpan DB di folder utama agar aman di Streamlit Cloud
+DB_PATH = os.path.join(os.getcwd(), "activity.db")
 
 def get_connection():
     return sqlite3.connect(DB_PATH, check_same_thread=False)
